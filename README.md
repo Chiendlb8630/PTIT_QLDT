@@ -1,6 +1,6 @@
 # 📘 Education Management - Spring Boot Project
 
-This project is a web-based Training Management System developed with Spring Boot, aiming to facilitate academic operations like course registration, grade tracking, student-teacher interaction, and announcements. It integrates a structured MySQL database for robust data management.
+This project is a web-based Education Management developed with Spring Boot, aiming to facilitate academic operations like course registration, grade tracking, student-teacher interaction, and announcements. It integrates a structured MySQL database for robust data management.
 
 ---
 
