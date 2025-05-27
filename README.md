@@ -1,4 +1,4 @@
-# 📘 Training Management System - Spring Boot Project
+# 📘 Education Management - Spring Boot Project
 
 This project is a web-based Training Management System developed with Spring Boot, aiming to facilitate academic operations like course registration, grade tracking, student-teacher interaction, and announcements. It integrates a structured MySQL database for robust data management.
 
@@ -15,27 +15,6 @@ This project is a web-based Training Management System developed with Spring Boo
 
 ---
 
-## 📂 Project Structure
-
-```
-qldt_spring-main/
-├── src/
-│   ├── main/
-│   │   ├── java/com/example/qldt/
-│   │   │   ├── controller/
-│   │   │   ├── model/
-│   │   │   ├── repository/
-│   │   │   └── service/
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       └── static/ (if applicable)
-├── DB_QLDT.sql
-├── pom.xml
-└── README.md
-```
-
----
-
 ## ⚙️ Installation Guide
 
 ### 1. Database Setup
@@ -49,10 +28,6 @@ USE qldt;
 ```
 
 You can execute it using MySQL Workbench or the MySQL CLI:
-
-```bash
-mysql -u root -p qldt < DB_QLDT.sql
-```
 
 ### 2. Configure application.properties
 
