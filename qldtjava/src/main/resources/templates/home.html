@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout1}"
+>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>PTIT</title>
+
+
+</head>
+<body>
+
+
+
+
+
+<section layout:fragment="body">
+
+    <div class="slideshow-container">
+        <div class="mySlides fade" >
+            <img src="https://scontent.fhan12-1.fna.fbcdn.net/v/t39.30808-6/482005307_1078125381024453_3427486666747079556_n.png?stp=dst-png_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEv9uRYPFm0GtMoN0GvmcxkAfOoc6WmK1wB86hzpaYrXP2X725nsGVBywyTw1b0KvTvHtYdt0j7a02PA_kgPViS&_nc_ohc=E5MLgtc2k-cQ7kNvwGy63wm&_nc_oc=Adnvzizs-AXI5xg3Vj-7yBpUxt3B0x6B6nYpTLs4oDwSMdMABCBa_ssRp1ESG-L9gxs&_nc_zt=23&_nc_ht=scontent.fhan12-1.fna&_nc_gid=rH-FiJ03-B2QZ9EBoBqZWw&oh=00_AfL5p_xqAAbh_KqCzl94AGRk2klM8s4SAWoHB2he2vBfWQ&oe=682B1B24" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://xdcs.cdnchinhphu.vn/446259493575335936/2023/8/23/dji0014-16927805029851508391686.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://rikkei.edu.vn/wp-content/uploads/2024/02/Ky-su-Cong-nghe-thong-tin-PTIT-Rikkei-Academy-scaled.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <img src="https://scontent.fhan12-1.fna.fbcdn.net/v/t39.30808-6/482005307_1078125381024453_3427486666747079556_n.png?stp=dst-png_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEv9uRYPFm0GtMoN0GvmcxkAfOoc6WmK1wB86hzpaYrXP2X725nsGVBywyTw1b0KvTvHtYdt0j7a02PA_kgPViS&_nc_ohc=E5MLgtc2k-cQ7kNvwGy63wm&_nc_oc=Adnvzizs-AXI5xg3Vj-7yBpUxt3B0x6B6nYpTLs4oDwSMdMABCBa_ssRp1ESG-L9gxs&_nc_zt=23&_nc_ht=scontent.fhan12-1.fna&_nc_gid=rH-FiJ03-B2QZ9EBoBqZWw&oh=00_AfL5p_xqAAbh_KqCzl94AGRk2klM8s4SAWoHB2he2vBfWQ&oe=682B1B24" style="width:100%">
+        </div>
+        
+    </div>
+    <style>
+        .slideshow-container {
+            height: 440px;
+            padding-top: 20px;
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .fade {
+            animation: fade 3s linear infinite;
+        }
+
+        @keyframes fade {
+            0% { opacity: 0.8; }
+            20% { opacity: 1; }
+            50% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+    </style>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 3000); // Đổi 2000 thành thời gian chuyển đổi ảnh mong muốn (ms)
+        }
+
+    </script>
+    <div class="container">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h1 style="font-size: 30px">Thông báo từ phòng giáo vụ</h1>
+
+                        </div>
+
+                        <div style="position: absolute; right: 10px" class="col-xs-6">
+
+                            <a style="margin-top: 10px" th:if="${session.acc != null && session.acc.getRole() == 1}"
+                               href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm thông báo</span></a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr th:if="${session.acc != null && session.acc.getRole() == 1}">
+                        <th>
+                        </th>
+                        <th>Tiêu đề</th>
+                        <th>Thời gian tạo</th>
+
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="o :${notifications}">
+                        <td>
+                        </td>
+                        <td>
+                            <a th:href="@{/home/{notificationId}/detail(notificationId=${o.id})}" >
+                                [[${o.title}]]
+                            </a>
+                        </td>
+                        <td>[[${o.createdAt}]]</td>
+
+                        <td>
+                            <a th:if="${session.acc != null && session.acc.getRole() == 1}"
+                               th:href="@{/home/{notificationId}/edit(notificationId=${o.id})}" class="edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a th:if="${session.acc != null && session.acc.getRole() == 1}"
+                               th:href="@{/home/{notificationId}/delete(notificationId=${o.id})}" class="delete" ><i  class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!--Add Modal HTML hdh-->
+    <div id="addEmployeeModal" class="modal in" style="display: none;padding-right: 15px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/home/create-notification" method = "post">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm thông báo</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Tiêu đề</label>
+                            <textarea type="text" class="form-control" name ="title"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Nội dung</label>
+                            <textarea type="text" class="form-control"  name ="mes"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-success" value="Add">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal HTML -->
+    <div id="editEmployeeModal" class="modal in" th:style="${blockEdit == true ? 'display: block;' : 'display: none;'}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form th:action="@{/home/{notificationId}/edit(notificationId=${notification.id})}" method = "post" th:object="${notification}">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Chỉnh sửa</h4>
+                        <button  type="button" class="close" data-dismiss="modal" aria-hidden="true"><a th:href="@{/home}">&times;</a></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Tiêu đề</label>
+                            <textarea th:field="*{title}" class="form-control"></textarea>
+                        </div>
+                        <div >
+                            <label>Nội dung</label>
+                            <textarea th:field="*{message}" class="form-control"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-------complete html----------->
+
+
+
+
+</body>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</html>
+
+
